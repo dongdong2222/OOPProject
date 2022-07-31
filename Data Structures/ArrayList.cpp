@@ -49,3 +49,4 @@ int ArrayList::LCount()
 {
 	return numOfData;
 }
+

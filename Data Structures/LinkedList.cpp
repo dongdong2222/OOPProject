@@ -87,3 +87,67 @@ void LinkedList::SetSortRule(bool (*comp)(LData num1, LData num2))
 	this->comp = comp;
 }
 
+
+CLinkedList::CLinkedList() : numofData(0), cur(NULL)
+{
+	head = new FNode(0);
+	tail = new FNode(0);
+	head->next = tail;
+	tail->prev = head;
+
+}
+void CLinkedList::LInsert(LData data)
+{
+	FNode* newNode = new FNode(data);
+
+	newNode->next = head->next;
+	head->next->prev = newNode;
+	head->next = newNode;
+	newNode->prev = head;
+
+	numofData++;
+}
+
+bool CLinkedList::LFirst(LData* data)
+{
+	if (head->next == NULL)
+		return false;
+
+	cur = head->next;
+	*data = cur->data;
+	return true;
+}
+
+bool CLinkedList::LNext(LData* data)
+{
+	if (cur->next == tail)
+		return false;
+
+	cur = cur->next;
+	*data = cur->data;
+	return true;
+}
+
+bool CLinkedList::LPrevious(LData* data)
+{
+	if (cur->prev == head)
+		return false;
+
+	cur = cur->prev;
+	*data = cur->data;
+	return true;
+}
+
+LData CLinkedList::LRemove()
+{
+	FNode* rpos = cur;
+	LData rdata = cur->data;
+
+	cur->prev->next = cur->next;
+	cur->next->prev = cur->prev;
+
+	cur = cur->prev; // Æ²¸²
+	delete rpos;
+	numofData--;
+	return rdata;
+}

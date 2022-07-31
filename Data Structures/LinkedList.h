@@ -12,6 +12,16 @@ public:
 	{ }
 };
 
+class FNode
+{
+public:
+	LData data;
+	FNode* prev;
+	FNode* next;
+	FNode(LData data) :data(data)
+	{ }
+};
+
 class LinkedList
 {
 private:
@@ -32,5 +42,25 @@ public:
 	int LCount();
 	//Ãß°¡
 	void SetSortRule(bool (*comp)(LData num1, LData num2));
+};
+
+
+
+
+class CLinkedList
+{
+private:
+	FNode* head;
+	FNode* tail;
+	FNode* cur;
+	int numofData;
+public:
+	CLinkedList();
+	void LInsert(LData data);
+	bool LFirst(LData* data);
+	bool LNext(LData* data);
+	bool LPrevious(LData* data);
+	LData LRemove();
+
 };
 
