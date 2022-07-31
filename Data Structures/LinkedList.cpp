@@ -69,5 +69,21 @@ LData LinkedList::LRemove() //연속 호출이 불가하다.
 void LinkedList::SInsert(LData data)
 {
 	Node* newNode = new Node(data, NULL);
-	//to do
+	Node* pred = head;
+	
+	//comp가 true시 d1이 d2보다 정렬상 앞에 위치한다 false시 아니다
+	while (pred->next == NULL && !comp(data, pred->next->data))
+	{
+		pred = pred->next;
+	}
+
+	newNode->next = pred->next;
+	pred->next = newNode;
+	numofData++;
 }
+
+void LinkedList::SetSortRule(bool (*comp)(LData num1, LData num2))
+{
+	this->comp = comp;
+}
+

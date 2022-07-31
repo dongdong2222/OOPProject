@@ -2,7 +2,6 @@
 #include "Car.h"
 int main()
 {
-	SoDerived drv1(15);
-	SoDerived drv2(27);
-
+	SoBase* ptr = new SoDerived(6);
+	ptr->TestOverride();
 }

@@ -46,6 +46,10 @@ public:
 	{
 		cout << "~SoBase() : " << baseNum << endl;
 	}
+	virtual void TestOverride()
+	{
+		cout << "SoBase Test";
+	}
 };
 
 class SoDerived : public SoBase
@@ -61,6 +65,10 @@ public:
 	~SoDerived()
 	{
 		cout << "~SoDerived() :" << derivNum << endl;
+	}
+	void  TestOverride()
+	{
+		cout << "SoDerived Test";
 	}
 };
 class MyFriendInfo
